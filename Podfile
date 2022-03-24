@@ -7,6 +7,7 @@ target 'test-bcp' do
 
   # Pods for test-bcp
 pod 'Alamofire', '~> 5.5'
+pod 'Kingfisher', '~> 7.0'
 
   target 'test-bcpTests' do
     inherit! :search_paths

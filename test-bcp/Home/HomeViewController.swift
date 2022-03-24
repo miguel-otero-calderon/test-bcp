@@ -22,11 +22,9 @@ class HomeViewController: UIViewController {
     var viewModel: HomeViewModelType = HomeViewModel(currrencyService: CurrencyService())
     var currencies:[GetCurrenciesResponse] = []
     var current:GetCurrenciesResponse?
+    let initValue:Double = 100.00
     
     private var currentRatesDate: String?
-//    private var selectedConrverion = ConversionData()
-//    private var currencies:[CurrencyResponse]?
-//    private let service = CurrencyService()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -41,44 +39,12 @@ class HomeViewController: UIViewController {
         secondCurrencyAmountTextField.isEnabled = false
         secondCurrencyAmountTextField.isUserInteractionEnabled = false
         currentPriceLabel.isHidden = true
+        firstCurrencyAmountTextField.isHidden = true
+        secondCurrencyAmountTextField.isHidden = true
     }
  
     func event(){
-//        service.getListCurrency() { [weak self] (result) in
-//
-//            switch result {
-//            case .success(let listOf):
-//                self?.currencies = listOf
-//                print(self!.currencies)
-//
-//                for currency in self!.currencies! {
-//
-//                    if currency.symbol == "USD"{
-//                        self?.firstCurrencyLabel.text = "\(currency.description)"
-//                        self?.firstCurrencyAmountTextField.text = "100"
-//                        self!.currentPriceLabel.text = "Compra \(currency.buy) | Venta: \(currency.sell)"
-//                        UserDefaults.standard.setValue(currency.rate, forKey: "rateSource")
-//
-//
-//                    }
-//
-//                    if currency.symbol == "PEN"{
-//                        self?.secondCurrencyLabel.text = "\(currency.description)"
-//
-//                    }
-//                    self?.operation()
-//                }
-//            case .failure(let error):
-//                // Something is wrong with the JSON file or the model
-//                print("Error processing json data: \(error)")
-//            }
-//        }
-        
-        
-        
-        
-        let tap = UITapGestureRecognizer(target: self,
-                                         action: #selector(self.firstChangeCurrency(_:)))
+        let tap = UITapGestureRecognizer(target: self, action: #selector(self.firstChangeCurrency(_:)))
         btnFromView.addGestureRecognizer(tap)
         
 //        let tapSecond = UITapGestureRecognizer(target: self,
@@ -138,10 +104,11 @@ class HomeViewController: UIViewController {
     }
     
     func showListCurrency(){
-//        let storyBoard = UIStoryboard(name: "Main", bundle: nil)
-//        let listCurrencyViewController = storyBoard.instantiateViewController(withIdentifier: "listCurrency") as! ListCurrencyViewController
-//        listCurrencyViewController.delegate = self
-//        self.navigationController?.pushViewController(listCurrencyViewController, animated: true)
+        let storyBoard = UIStoryboard(name: "Main", bundle: nil)
+        let vc = storyBoard.instantiateViewController(withIdentifier: ListCurrenciesViewController.identifier) as! ListCurrenciesViewController
+        vc.currencies = currencies
+        vc.delegate = self
+        self.navigationController?.pushViewController(vc, animated: true)
     }
     
     func operation(){
@@ -220,6 +187,21 @@ extension HomeViewController {
     func fillDataCurrency() {
         guard let currency = self.current else { return }
         currentPriceLabel.isHidden = false
+        firstCurrencyAmountTextField.isHidden = false
+        secondCurrencyAmountTextField.isHidden = false
+        
         currentPriceLabel.text = "Compra: \(currency.buy) | Venta: \(currency.sell)"
+        
+        firstCurrencyAmountTextField.text = String(initValue)
+        secondCurrencyAmountTextField.text = String(initValue*currency.buy)
+        
+        firstCurrencyLabel.text = "Dolares"
+        secondCurrencyLabel.text = currency.description
+        
+    }
+}
+extension HomeViewController: ListCurrenciesViewControllerDelegate {
+    func selected(currency: GetCurrenciesResponse) {
+        print(currency)
     }
 }
