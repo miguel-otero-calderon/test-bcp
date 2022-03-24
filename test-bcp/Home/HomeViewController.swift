@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import Foundation
 
 class HomeViewController: UIViewController {
     @IBOutlet weak var firstCurrencyAmountTextField: UITextField!
@@ -27,6 +28,7 @@ class HomeViewController: UIViewController {
         super.viewDidLoad()
         setupView()
         event()
+
     }
     func setupView(){
         self.firstCurrencyAmountTextField.delegate = self
@@ -36,35 +38,35 @@ class HomeViewController: UIViewController {
     }
  
     func event(){
-        service.getListCurrency() { [weak self] (result) in
-            
-            switch result {
-            case .success(let listOf):
-                self?.currencies = listOf
-                print(self!.currencies)
-               
-                for currency in self!.currencies! {
-                    
-                    if currency.symbol == "USD"{
-                        self?.firstCurrencyLabel.text = "\(currency.description)"
-                        self?.firstCurrencyAmountTextField.text = "100"
-                        self!.currentPriceLabel.text = "Compra \(currency.buy) | Venta: \(currency.sell)"
-                        UserDefaults.standard.setValue(currency.rate, forKey: "rateSource")
-                        
-                        
-                    }
-                    
-                    if currency.symbol == "PEN"{
-                        self?.secondCurrencyLabel.text = "\(currency.description)"
-                        
-                    }
-                    self?.operation()
-                }
-            case .failure(let error):
-                // Something is wrong with the JSON file or the model
-                print("Error processing json data: \(error)")
-            }
-        }
+//        service.getListCurrency() { [weak self] (result) in
+//
+//            switch result {
+//            case .success(let listOf):
+//                self?.currencies = listOf
+//                print(self!.currencies)
+//
+//                for currency in self!.currencies! {
+//
+//                    if currency.symbol == "USD"{
+//                        self?.firstCurrencyLabel.text = "\(currency.description)"
+//                        self?.firstCurrencyAmountTextField.text = "100"
+//                        self!.currentPriceLabel.text = "Compra \(currency.buy) | Venta: \(currency.sell)"
+//                        UserDefaults.standard.setValue(currency.rate, forKey: "rateSource")
+//
+//
+//                    }
+//
+//                    if currency.symbol == "PEN"{
+//                        self?.secondCurrencyLabel.text = "\(currency.description)"
+//
+//                    }
+//                    self?.operation()
+//                }
+//            case .failure(let error):
+//                // Something is wrong with the JSON file or the model
+//                print("Error processing json data: \(error)")
+//            }
+//        }
         
         
         
@@ -96,16 +98,16 @@ class HomeViewController: UIViewController {
         var rateSource:Double = 0
         var rateDestination:Double = 0
         
-        for currency in self.currencies! {
-            if currency.description == currencyDestinationDescription {
-                rateDestination = currency.rate
-            }
-            
-            if currency.description == currencySourceDescription {
-                rateSource = currency.rate
-                currentPriceLabel.text = "Compra \(currency.buy) | Venta: \(currency.sell)"
-            }
-        }
+//        for currency in self.currencies! {
+//            if currency.description == currencyDestinationDescription {
+//                rateDestination = currency.rate
+//            }
+//
+//            if currency.description == currencySourceDescription {
+//                rateSource = currency.rate
+//                currentPriceLabel.text = "Compra \(currency.buy) | Venta: \(currency.sell)"
+//            }
+//        }
         
         self.firstCurrencyAmountTextField.text = String(amountSource)
         self.secondCurrencyAmountTextField.text = String(amountDestination)
@@ -130,29 +132,29 @@ class HomeViewController: UIViewController {
     }
     
     func showListCurrency(){
-        let storyBoard = UIStoryboard(name: "Main", bundle: nil)
-        let listCurrencyViewController = storyBoard.instantiateViewController(withIdentifier: "listCurrency") as! ListCurrencyViewController
-        listCurrencyViewController.delegate = self
-        self.navigationController?.pushViewController(listCurrencyViewController, animated: true)
+//        let storyBoard = UIStoryboard(name: "Main", bundle: nil)
+//        let listCurrencyViewController = storyBoard.instantiateViewController(withIdentifier: "listCurrency") as! ListCurrencyViewController
+//        listCurrencyViewController.delegate = self
+//        self.navigationController?.pushViewController(listCurrencyViewController, animated: true)
     }
     
     func operation(){
-        guard let destinationCurrency = self.secondCurrencyLabel.text else { return }
-        let rateSource = UserDefaults.standard.double(forKey: "rateSource")
-        var rateDestination :Double = 0
-        guard let myCurrencies = self.currencies else {return}
-        for currency in myCurrencies {
-            if currency.description == destinationCurrency {
-                rateDestination = currency.rate
-            }
-        }
+//        guard let destinationCurrency = self.secondCurrencyLabel.text else { return }
+//        let rateSource = UserDefaults.standard.double(forKey: "rateSource")
+//        var rateDestination :Double = 0
+//        guard let myCurrencies = self.currencies else {return}
+//        for currency in myCurrencies {
+//            if currency.description == destinationCurrency {
+//                rateDestination = currency.rate
+//            }
+//        }
         
-        guard let amountSource = Double(self.firstCurrencyAmountTextField.text!) else { return }
-        
-        let amount = amountSource * rateDestination / rateSource
-        let rounded = amount.roundToDecimal(2)
-        
-        self.secondCurrencyAmountTextField.text = String(rounded)
+//        guard let amountSource = Double(self.firstCurrencyAmountTextField.text!) else { return }
+//
+//        let amount = amountSource * rateDestination / rateSource
+//        let rounded = amount.roundToDecimal(2)
+//
+//        self.secondCurrencyAmountTextField.text = String(rounded)
     }
     
     
@@ -160,26 +162,26 @@ class HomeViewController: UIViewController {
         self.operation()
     }
 }
-extension ViewController: ListCurrencyDelegate{
-    func selectedCurrency(currency: CurrencyResponse) {
-        DispatchQueue.main.async { [self] in
-            
-            UserDefaults.standard.setValue(currency.rate, forKey: "rateSource")
-            
-            self.firstCurrencyLabel.text = currency.description
-            
-            self.currentPriceLabel.text = "Compra \(currency.buy) | Venta: \(currency.sell)"
-            self.operation()
-        }
-        
-//        self.secondCurrencyLabel.text = currency.description
-
-    }
-    
-    func getCurrencies(currencies: [CurrencyResponse]){
-        self.currencies = currencies
-    }
-}
+//extension HomeViewController: ListCurrencyDelegate{
+//    func selectedCurrency(currency: CurrencyResponse) {
+//        DispatchQueue.main.async { [self] in
+//
+//            UserDefaults.standard.setValue(currency.rate, forKey: "rateSource")
+//
+//            self.firstCurrencyLabel.text = currency.description
+//
+//            self.currentPriceLabel.text = "Compra \(currency.buy) | Venta: \(currency.sell)"
+//            self.operation()
+//        }
+//
+////        self.secondCurrencyLabel.text = currency.description
+//
+//    }
+//
+//    func getCurrencies(currencies: [CurrencyResponse]){
+//        self.currencies = currencies
+//    }
+//}
 
 extension HomeViewController :UITextFieldDelegate {
     open override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {

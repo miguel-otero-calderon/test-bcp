@@ -16,11 +16,12 @@
 		4C279A2C27ECD8870034E607 /* test_bcpTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C279A2B27ECD8870034E607 /* test_bcpTests.swift */; };
 		4C279A3627ECD8870034E607 /* test_bcpUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C279A3527ECD8870034E607 /* test_bcpUITests.swift */; };
 		4C279A3827ECD8870034E607 /* test_bcpUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C279A3727ECD8870034E607 /* test_bcpUITestsLaunchTests.swift */; };
+		4C6A763C27ECE53300567C88 /* EndPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C6A763B27ECE53300567C88 /* EndPoint.swift */; };
+		4C6A763F27ECE56B00567C88 /* CurrencyService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C6A763E27ECE56B00567C88 /* CurrencyService.swift */; };
+		4C6A764127ECE57600567C88 /* CurrencyResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C6A764027ECE57600567C88 /* CurrencyResponse.swift */; };
+		4C6A764327ECE5AD00567C88 /* CurrencyEndPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C6A764227ECE5AD00567C88 /* CurrencyEndPoint.swift */; };
 		4CC5E82B27ECDAC300158ED4 /* HomeVidewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CC5E82A27ECDAC300158ED4 /* HomeVidewModel.swift */; };
 		4CC5E82D27ECDAD000158ED4 /* HomeModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CC5E82C27ECDAD000158ED4 /* HomeModel.swift */; };
-		4CC5E83027ECDAEB00158ED4 /* ExchangeService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CC5E82F27ECDAEB00158ED4 /* ExchangeService.swift */; };
-		4CC5E83227ECDCD300158ED4 /* ExchangeRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CC5E83127ECDCD300158ED4 /* ExchangeRequest.swift */; };
-		4CC5E83427ECDCEF00158ED4 /* ExchangeResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CC5E83327ECDCEF00158ED4 /* ExchangeResponse.swift */; };
 		753A4506F9CFAFFFFADDC42B /* Pods_test_bcp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4883152B0911F6780DC0DA96 /* Pods_test_bcp.framework */; };
 		87627C7079D96926FE8CDE5A /* Pods_test_bcpTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 31B7F8DD5683C44DFC3F9D4C /* Pods_test_bcpTests.framework */; };
 		A42CC9F70D8BBB6FD08DD3C9 /* Pods_test_bcp_test_bcpUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1147C71BA38F6C5BAFBF1BF6 /* Pods_test_bcp_test_bcpUITests.framework */; };
@@ -62,11 +63,12 @@
 		4C279A3127ECD8870034E607 /* test-bcpUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "test-bcpUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		4C279A3527ECD8870034E607 /* test_bcpUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = test_bcpUITests.swift; sourceTree = "<group>"; };
 		4C279A3727ECD8870034E607 /* test_bcpUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = test_bcpUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		4C6A763B27ECE53300567C88 /* EndPoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EndPoint.swift; sourceTree = "<group>"; };
+		4C6A763E27ECE56B00567C88 /* CurrencyService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyService.swift; sourceTree = "<group>"; };
+		4C6A764027ECE57600567C88 /* CurrencyResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyResponse.swift; sourceTree = "<group>"; };
+		4C6A764227ECE5AD00567C88 /* CurrencyEndPoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyEndPoint.swift; sourceTree = "<group>"; };
 		4CC5E82A27ECDAC300158ED4 /* HomeVidewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeVidewModel.swift; sourceTree = "<group>"; };
 		4CC5E82C27ECDAD000158ED4 /* HomeModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeModel.swift; sourceTree = "<group>"; };
-		4CC5E82F27ECDAEB00158ED4 /* ExchangeService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExchangeService.swift; sourceTree = "<group>"; };
-		4CC5E83127ECDCD300158ED4 /* ExchangeRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExchangeRequest.swift; sourceTree = "<group>"; };
-		4CC5E83327ECDCEF00158ED4 /* ExchangeResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExchangeResponse.swift; sourceTree = "<group>"; };
 		8C0B3977EC88EAAF8F91EA54 /* Pods-test-bcpTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-test-bcpTests.release.xcconfig"; path = "Target Support Files/Pods-test-bcpTests/Pods-test-bcpTests.release.xcconfig"; sourceTree = "<group>"; };
 		AD47080DD4FE20289ACEEDD1 /* Pods-test-bcp-test-bcpUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-test-bcp-test-bcpUITests.debug.xcconfig"; path = "Target Support Files/Pods-test-bcp-test-bcpUITests/Pods-test-bcp-test-bcpUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		F1C89940D2CDF69FBAD61ADD /* Pods-test-bcp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-test-bcp.release.xcconfig"; path = "Target Support Files/Pods-test-bcp/Pods-test-bcp.release.xcconfig"; sourceTree = "<group>"; };
@@ -126,7 +128,7 @@
 		4C279A1327ECD8850034E607 /* test-bcp */ = {
 			isa = PBXGroup;
 			children = (
-				4CC5E82E27ECDAD400158ED4 /* Services */,
+				4C6A763927ECE51000567C88 /* Networking */,
 				4CC5E82927ECDA8A00158ED4 /* Home */,
 				4C279A1427ECD8850034E607 /* AppDelegate.swift */,
 				4C279A1627ECD8850034E607 /* SceneDelegate.swift */,
@@ -155,6 +157,33 @@
 			path = "test-bcpUITests";
 			sourceTree = "<group>";
 		};
+		4C6A763927ECE51000567C88 /* Networking */ = {
+			isa = PBXGroup;
+			children = (
+				4C6A763D27ECE55300567C88 /* Currency */,
+				4C6A763A27ECE52700567C88 /* EndPoint */,
+			);
+			path = Networking;
+			sourceTree = "<group>";
+		};
+		4C6A763A27ECE52700567C88 /* EndPoint */ = {
+			isa = PBXGroup;
+			children = (
+				4C6A763B27ECE53300567C88 /* EndPoint.swift */,
+			);
+			path = EndPoint;
+			sourceTree = "<group>";
+		};
+		4C6A763D27ECE55300567C88 /* Currency */ = {
+			isa = PBXGroup;
+			children = (
+				4C6A763E27ECE56B00567C88 /* CurrencyService.swift */,
+				4C6A764027ECE57600567C88 /* CurrencyResponse.swift */,
+				4C6A764227ECE5AD00567C88 /* CurrencyEndPoint.swift */,
+			);
+			path = Currency;
+			sourceTree = "<group>";
+		};
 		4CC5E82927ECDA8A00158ED4 /* Home */ = {
 			isa = PBXGroup;
 			children = (
@@ -163,16 +192,6 @@
 				4CC5E82C27ECDAD000158ED4 /* HomeModel.swift */,
 			);
 			path = Home;
-			sourceTree = "<group>";
-		};
-		4CC5E82E27ECDAD400158ED4 /* Services */ = {
-			isa = PBXGroup;
-			children = (
-				4CC5E82F27ECDAEB00158ED4 /* ExchangeService.swift */,
-				4CC5E83127ECDCD300158ED4 /* ExchangeRequest.swift */,
-				4CC5E83327ECDCEF00158ED4 /* ExchangeResponse.swift */,
-			);
-			path = Services;
 			sourceTree = "<group>";
 		};
 		598D0B187C5B00903BFADCF0 /* Frameworks */ = {
@@ -440,11 +459,12 @@
 				4CC5E82B27ECDAC300158ED4 /* HomeVidewModel.swift in Sources */,
 				4C279A1927ECD8850034E607 /* HomeViewController.swift in Sources */,
 				4C279A1527ECD8850034E607 /* AppDelegate.swift in Sources */,
-				4CC5E83427ECDCEF00158ED4 /* ExchangeResponse.swift in Sources */,
-				4CC5E83227ECDCD300158ED4 /* ExchangeRequest.swift in Sources */,
+				4C6A763C27ECE53300567C88 /* EndPoint.swift in Sources */,
+				4C6A763F27ECE56B00567C88 /* CurrencyService.swift in Sources */,
 				4CC5E82D27ECDAD000158ED4 /* HomeModel.swift in Sources */,
-				4CC5E83027ECDAEB00158ED4 /* ExchangeService.swift in Sources */,
+				4C6A764327ECE5AD00567C88 /* CurrencyEndPoint.swift in Sources */,
 				4C279A1727ECD8850034E607 /* SceneDelegate.swift in Sources */,
+				4C6A764127ECE57600567C88 /* CurrencyResponse.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

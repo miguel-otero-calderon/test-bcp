@@ -1,5 +1,5 @@
 //
-//  ExchangeResponse.swift
+//  HomeResponse.swift
 //  test-bcp
 //
 //  Created by Miguel on 24/03/22.
@@ -8,7 +8,7 @@
 import Foundation
 
 // MARK: - ExchangeResponse
-struct ExchangeResponse: Codable {
+struct GetCurrenciesResponse: Codable {
     let country: String
     let description: String
     let image: String
@@ -23,4 +23,3 @@ struct ExchangeResponse: Codable {
         case image, symbol, rate, sell, buy
     }
 }
-
