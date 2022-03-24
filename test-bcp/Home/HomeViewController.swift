@@ -47,10 +47,10 @@ class HomeViewController: UIViewController {
         let tap = UITapGestureRecognizer(target: self, action: #selector(self.firstChangeCurrency(_:)))
         btnFromView.addGestureRecognizer(tap)
         
-//        let tapSecond = UITapGestureRecognizer(target: self,
-//                                               action: #selector(self.secondChangeCurrency(_:)))
-//        btnToView.addGestureRecognizer(tapSecond)
-//
+        let tapSecond = UITapGestureRecognizer(target: self,
+                                               action: #selector(self.secondChangeCurrency(_:)))
+        btnToView.addGestureRecognizer(tapSecond)
+
         firstCurrencyAmountTextField.addTarget(self,
                                                action: #selector(starOperation (amountTextField:)), for: .editingChanged)
         
@@ -135,26 +135,6 @@ class HomeViewController: UIViewController {
         self.operation()
     }
 }
-//extension HomeViewController: ListCurrencyDelegate{
-//    func selectedCurrency(currency: CurrencyResponse) {
-//        DispatchQueue.main.async { [self] in
-//
-//            UserDefaults.standard.setValue(currency.rate, forKey: "rateSource")
-//
-//            self.firstCurrencyLabel.text = currency.description
-//
-//            self.currentPriceLabel.text = "Compra \(currency.buy) | Venta: \(currency.sell)"
-//            self.operation()
-//        }
-//
-////        self.secondCurrencyLabel.text = currency.description
-//
-//    }
-//
-//    func getCurrencies(currencies: [CurrencyResponse]){
-//        self.currencies = currencies
-//    }
-//}
 
 extension HomeViewController :UITextFieldDelegate {
     open override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
