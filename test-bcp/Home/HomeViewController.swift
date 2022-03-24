@@ -19,6 +19,10 @@ class HomeViewController: UIViewController {
     @IBOutlet weak var changeIconView: UIView!
     @IBOutlet weak var changeIconImage: UIImageView!
     
+    var viewModel: HomeViewModelType = HomeViewModel(currrencyService: CurrencyService())
+    var currencies:[GetCurrenciesResponse] = []
+    var current:GetCurrenciesResponse?
+    
     private var currentRatesDate: String?
 //    private var selectedConrverion = ConversionData()
 //    private var currencies:[CurrencyResponse]?
@@ -28,13 +32,15 @@ class HomeViewController: UIViewController {
         super.viewDidLoad()
         setupView()
         event()
-
+        viewModel.delegate = self
+        viewModel.getCurrrencies()
     }
     func setupView(){
         self.firstCurrencyAmountTextField.delegate = self
         self.secondCurrencyAmountTextField.delegate = self
         secondCurrencyAmountTextField.isEnabled = false
         secondCurrencyAmountTextField.isUserInteractionEnabled = false
+        currentPriceLabel.isHidden = true
     }
  
     func event(){
@@ -190,5 +196,30 @@ extension HomeViewController :UITextFieldDelegate {
     
     public func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         return textField.resignFirstResponder()
+    }
+}
+extension HomeViewController : HomeViewModelDelegate {
+    func getCurrrencies(currencies: [GetCurrenciesResponse]?, error: Error?) {
+        self.currencies = []
+        if let currencies = currencies {
+            self.currencies = currencies
+            if isViewLoaded {
+                if let current = currencies.first(where: { c in c.country.uppercased() == "PERU"}) {
+                    self.current = current
+                    fillDataCurrency()
+                }
+            }
+        }
+        
+        if let error = error {
+            print(error)
+        }
+    }
+}
+extension HomeViewController {
+    func fillDataCurrency() {
+        guard let currency = self.current else { return }
+        currentPriceLabel.isHidden = false
+        currentPriceLabel.text = "Compra: \(currency.buy) | Venta: \(currency.sell)"
     }
 }

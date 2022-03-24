@@ -20,7 +20,7 @@
 		4C6A763F27ECE56B00567C88 /* CurrencyService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C6A763E27ECE56B00567C88 /* CurrencyService.swift */; };
 		4C6A764127ECE57600567C88 /* CurrencyResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C6A764027ECE57600567C88 /* CurrencyResponse.swift */; };
 		4C6A764327ECE5AD00567C88 /* CurrencyEndPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C6A764227ECE5AD00567C88 /* CurrencyEndPoint.swift */; };
-		4CC5E82B27ECDAC300158ED4 /* HomeVidewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CC5E82A27ECDAC300158ED4 /* HomeVidewModel.swift */; };
+		4CC5E82B27ECDAC300158ED4 /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CC5E82A27ECDAC300158ED4 /* HomeViewModel.swift */; };
 		4CC5E82D27ECDAD000158ED4 /* HomeModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CC5E82C27ECDAD000158ED4 /* HomeModel.swift */; };
 		753A4506F9CFAFFFFADDC42B /* Pods_test_bcp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4883152B0911F6780DC0DA96 /* Pods_test_bcp.framework */; };
 		87627C7079D96926FE8CDE5A /* Pods_test_bcpTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 31B7F8DD5683C44DFC3F9D4C /* Pods_test_bcpTests.framework */; };
@@ -67,7 +67,7 @@
 		4C6A763E27ECE56B00567C88 /* CurrencyService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyService.swift; sourceTree = "<group>"; };
 		4C6A764027ECE57600567C88 /* CurrencyResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyResponse.swift; sourceTree = "<group>"; };
 		4C6A764227ECE5AD00567C88 /* CurrencyEndPoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyEndPoint.swift; sourceTree = "<group>"; };
-		4CC5E82A27ECDAC300158ED4 /* HomeVidewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeVidewModel.swift; sourceTree = "<group>"; };
+		4CC5E82A27ECDAC300158ED4 /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
 		4CC5E82C27ECDAD000158ED4 /* HomeModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeModel.swift; sourceTree = "<group>"; };
 		8C0B3977EC88EAAF8F91EA54 /* Pods-test-bcpTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-test-bcpTests.release.xcconfig"; path = "Target Support Files/Pods-test-bcpTests/Pods-test-bcpTests.release.xcconfig"; sourceTree = "<group>"; };
 		AD47080DD4FE20289ACEEDD1 /* Pods-test-bcp-test-bcpUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-test-bcp-test-bcpUITests.debug.xcconfig"; path = "Target Support Files/Pods-test-bcp-test-bcpUITests/Pods-test-bcp-test-bcpUITests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -188,7 +188,7 @@
 			isa = PBXGroup;
 			children = (
 				4C279A1827ECD8850034E607 /* HomeViewController.swift */,
-				4CC5E82A27ECDAC300158ED4 /* HomeVidewModel.swift */,
+				4CC5E82A27ECDAC300158ED4 /* HomeViewModel.swift */,
 				4CC5E82C27ECDAD000158ED4 /* HomeModel.swift */,
 			);
 			path = Home;
@@ -456,7 +456,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				4CC5E82B27ECDAC300158ED4 /* HomeVidewModel.swift in Sources */,
+				4CC5E82B27ECDAC300158ED4 /* HomeViewModel.swift in Sources */,
 				4C279A1927ECD8850034E607 /* HomeViewController.swift in Sources */,
 				4C279A1527ECD8850034E607 /* AppDelegate.swift in Sources */,
 				4C6A763C27ECE53300567C88 /* EndPoint.swift in Sources */,

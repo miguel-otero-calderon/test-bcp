@@ -8,17 +8,18 @@
 import Foundation
 import UIKit
 
-protocol HomeVidewModelType: AnyObject {
+protocol HomeViewModelType: AnyObject {
     func getCurrrencies()
+    var delegate: HomeViewModelDelegate? { get set }
 }
 
-protocol BookViewModelDelegate: AnyObject {
+protocol HomeViewModelDelegate: AnyObject {
     func getCurrrencies(currencies: [GetCurrenciesResponse]? , error: Error?)
 }
 
-class HomeVidewModel: HomeVidewModelType {
+class HomeViewModel: HomeViewModelType {
     var currencyService: CurrencyServiceType
-    var delegate: BookViewModelDelegate?
+    var delegate: HomeViewModelDelegate?
     
     init(currrencyService: CurrencyServiceType) {
         self.currencyService = currrencyService
