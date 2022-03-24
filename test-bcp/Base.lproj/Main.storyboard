@@ -193,15 +193,15 @@
                     </view>
                     <navigationItem key="navigationItem" id="lGs-IX-SpV"/>
                     <connections>
-                        <outlet property="btnFromView" destination="vdq-Gu-2OY" id="d7g-br-BlP"/>
-                        <outlet property="btnToView" destination="zIn-Tu-XfV" id="ehh-iW-owk"/>
                         <outlet property="changeIconImage" destination="8jf-jT-aNw" id="gPT-BE-paY"/>
                         <outlet property="changeIconView" destination="RGO-2x-aEC" id="zbo-GE-Lxd"/>
-                        <outlet property="currentPriceLabel" destination="HBP-3k-xqq" id="fZr-Do-hvD"/>
-                        <outlet property="firstCurrencyAmountTextField" destination="IqZ-ul-UTJ" id="ghZ-6F-hvg"/>
                         <outlet property="firstCurrencyLabel" destination="uKq-D7-jXL" id="vXn-VK-04R"/>
-                        <outlet property="secondCurrencyAmountTextField" destination="efw-Yc-soC" id="MnR-yA-Z6n"/>
+                        <outlet property="firstText" destination="IqZ-ul-UTJ" id="ghZ-6F-hvg"/>
+                        <outlet property="firtsView" destination="vdq-Gu-2OY" id="d7g-br-BlP"/>
+                        <outlet property="footerLabel" destination="HBP-3k-xqq" id="fZr-Do-hvD"/>
                         <outlet property="secondCurrencyLabel" destination="i2g-3J-n9a" id="EeD-Y2-lJU"/>
+                        <outlet property="secondText" destination="efw-Yc-soC" id="MnR-yA-Z6n"/>
+                        <outlet property="secondView" destination="zIn-Tu-XfV" id="ehh-iW-owk"/>
                         <segue destination="bVo-8X-kyX" kind="push" id="uoo-6z-Oas"/>
                     </connections>
                 </viewController>

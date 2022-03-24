@@ -9,12 +9,12 @@ import UIKit
 import Foundation
 
 class HomeViewController: UIViewController {
-    @IBOutlet weak var firstCurrencyAmountTextField: UITextField!
-    @IBOutlet weak var secondCurrencyAmountTextField: UITextField!
-    @IBOutlet weak var currentPriceLabel: UILabel!
-    @IBOutlet weak var btnFromView: UIView!
+    @IBOutlet weak var firstText: UITextField!
+    @IBOutlet weak var secondText: UITextField!
+    @IBOutlet weak var footerLabel: UILabel!
+    @IBOutlet weak var firtsView: UIView!
     @IBOutlet weak var firstCurrencyLabel: UILabel!
-    @IBOutlet weak var btnToView: UIView!
+    @IBOutlet weak var secondView: UIView!
     @IBOutlet weak var secondCurrencyLabel: UILabel!
     @IBOutlet weak var changeIconView: UIView!
     @IBOutlet weak var changeIconImage: UIImageView!
@@ -29,77 +29,47 @@ class HomeViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setupView()
-        event()
+        settingTap()
+        
         viewModel.delegate = self
         viewModel.getCurrrencies()
     }
-    func setupView(){
-        self.firstCurrencyAmountTextField.delegate = self
-        self.secondCurrencyAmountTextField.delegate = self
-        secondCurrencyAmountTextField.isEnabled = false
-        secondCurrencyAmountTextField.isUserInteractionEnabled = false
-        currentPriceLabel.isHidden = true
-        firstCurrencyAmountTextField.isHidden = true
-        secondCurrencyAmountTextField.isHidden = true
-    }
- 
-    func event(){
-        let tap = UITapGestureRecognizer(target: self, action: #selector(self.firstChangeCurrency(_:)))
-        btnFromView.addGestureRecognizer(tap)
+    func settingTap() {
+        let tap1 = UITapGestureRecognizer(target: self, action: #selector(self.tapFirstCurrency(_:)))
+        firtsView.addGestureRecognizer(tap1)
         
-        let tapSecond = UITapGestureRecognizer(target: self,
-                                               action: #selector(self.secondChangeCurrency(_:)))
-        btnToView.addGestureRecognizer(tapSecond)
+        let tap2 = UITapGestureRecognizer(target: self,action: #selector(self.tapSecondCurrency(_:)))
+        secondView.addGestureRecognizer(tap2)
 
-        firstCurrencyAmountTextField.addTarget(self,
-                                               action: #selector(starOperation (amountTextField:)), for: .editingChanged)
+        let tap3 = UITapGestureRecognizer(target: self, action: #selector(self.changesCurrency(_:)))
+        changeIconView.addGestureRecognizer(tap3)
         
-        let tapChanges = UITapGestureRecognizer(target: self,
-                                                action: #selector(self.changesCurrency(_:)))
-                    changeIconView.addGestureRecognizer(tapChanges)
-                
+        firstText.addTarget(self, action: #selector(editingChanged(amounText:)), for: .editingChanged)
+    }
+    func setupView() {
+        self.firstText.delegate = self
+        self.secondText.delegate = self
+        secondText.isEnabled = false
+        secondText.isUserInteractionEnabled = false
+        
+        footerLabel.isHidden = true
+        firstText.isHidden = true
+        secondText.isHidden = true
     }
     
     @objc func changesCurrency(_:UIImageView){
         
-        guard let amountSource = Double(self.secondCurrencyAmountTextField.text!) else { return }
-        guard let amountDestination = Double(self.firstCurrencyAmountTextField.text!) else { return }
-        guard let currencySourceDescription = self.secondCurrencyLabel.text else { return }
-        guard let currencyDestinationDescription = self.firstCurrencyLabel.text else { return }
-        
-        var rateSource:Double = 0
-        var rateDestination:Double = 0
-        
-//        for currency in self.currencies! {
-//            if currency.description == currencyDestinationDescription {
-//                rateDestination = currency.rate
-//            }
-//
-//            if currency.description == currencySourceDescription {
-//                rateSource = currency.rate
-//                currentPriceLabel.text = "Compra \(currency.buy) | Venta: \(currency.sell)"
-//            }
-//        }
-        
-        self.firstCurrencyAmountTextField.text = String(amountSource)
-        self.secondCurrencyAmountTextField.text = String(amountDestination)
-        self.firstCurrencyLabel.text = currencySourceDescription
-        self.secondCurrencyLabel.text = currencyDestinationDescription
-        
-        UserDefaults.standard.setValue(rateSource, forKey: "rateSource")
-        
+    }
+    
+    @objc func editingChanged(amounText:UITextField){
         self.operation()
     }
     
-    @objc func starOperation(amountTextField:UITextField){
-        self.operation()
-    }
-    
-    @objc func firstChangeCurrency(_ sesder: UITapGestureRecognizer? = nil) {
+    @objc func tapFirstCurrency(_ sesder: UITapGestureRecognizer? = nil) {
         showListCurrency()
     }
     
-    @objc func secondChangeCurrency(_ sender: UITapGestureRecognizer? = nil) {
+    @objc func tapSecondCurrency(_ sender: UITapGestureRecognizer? = nil) {
         showListCurrency()
     }
     
@@ -112,22 +82,22 @@ class HomeViewController: UIViewController {
     }
     
     func operation(){
-//        guard let destinationCurrency = self.secondCurrencyLabel.text else { return }
-//        let rateSource = UserDefaults.standard.double(forKey: "rateSource")
-//        var rateDestination :Double = 0
-//        guard let myCurrencies = self.currencies else {return}
-//        for currency in myCurrencies {
-//            if currency.description == destinationCurrency {
-//                rateDestination = currency.rate
-//            }
-//        }
+        guard let destinationCurrency = self.secondCurrencyLabel.text else { return }
+        let rateSource = UserDefaults.standard.double(forKey: "rateSource")
+        var rateDestination :Double = 0
+        let myCurrencies = self.currencies
+        for currency in myCurrencies {
+            if currency.description == destinationCurrency {
+                rateDestination = currency.rate
+            }
+        }
         
-//        guard let amountSource = Double(self.firstCurrencyAmountTextField.text!) else { return }
-//
-//        let amount = amountSource * rateDestination / rateSource
-//        let rounded = amount.roundToDecimal(2)
-//
-//        self.secondCurrencyAmountTextField.text = String(rounded)
+        guard let amountSource = Double(self.firstText.text!) else { return }
+
+        let amount = amountSource * rateDestination / rateSource
+        let rounded = amount.roundToDecimal(2)
+
+        self.secondText.text = String(rounded)
     }
     
     
@@ -166,14 +136,14 @@ extension HomeViewController : HomeViewModelDelegate {
 extension HomeViewController {
     func fillDataCurrency() {
         guard let currency = self.current else { return }
-        currentPriceLabel.isHidden = false
-        firstCurrencyAmountTextField.isHidden = false
-        secondCurrencyAmountTextField.isHidden = false
+        footerLabel.isHidden = false
+        firstText.isHidden = false
+        secondText.isHidden = false
         
-        currentPriceLabel.text = "Compra: \(currency.buy) | Venta: \(currency.sell)"
+        footerLabel.text = "Compra: \(currency.buy) | Venta: \(currency.sell)"
         
-        firstCurrencyAmountTextField.text = String(initValue)
-        secondCurrencyAmountTextField.text = String(initValue*currency.buy)
+        firstText.text = String(initValue)
+        secondText.text = String(initValue*currency.buy)
         
         firstCurrencyLabel.text = "Dolares"
         secondCurrencyLabel.text = currency.description
