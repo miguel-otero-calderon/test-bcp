@@ -33,6 +33,6 @@ class CurrencyTableViewCell: UITableViewCell {
             self.countryImage.image = UIImage(named: "noImageAvailable")
         }
 
-        self.convertionLabel.text = "1 EUR = \(currency.rate) \(currency.symbol)"
+        self.convertionLabel.text = "1 \(currency.symbol2) = \(currency.rate) \(currency.symbol)"
     }
 }

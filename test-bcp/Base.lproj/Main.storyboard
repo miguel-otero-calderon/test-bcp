@@ -31,7 +31,7 @@
                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="4234" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="IqZ-ul-UTJ">
                                                 <rect key="frame" x="0.0" y="0.0" width="258" height="55"/>
                                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="14"/>
-                                                <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
+                                                <textInputTraits key="textInputTraits" keyboardType="decimalPad"/>
                                                 <connections>
                                                     <outlet property="delegate" destination="BYZ-38-t0r" id="Dq4-a0-4Nw"/>
                                                 </connections>
@@ -151,10 +151,10 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VNr-eL-IX0">
-                                <rect key="frame" x="0.0" y="695" width="414" height="113"/>
-                                <color key="backgroundColor" systemColor="systemTealColor"/>
+                                <rect key="frame" x="0.0" y="728" width="414" height="60"/>
+                                <color key="backgroundColor" systemColor="systemCyanColor"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="113" id="iCH-VN-1Va"/>
+                                    <constraint firstAttribute="height" constant="60" id="iCH-VN-1Va"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="15"/>
                                 <state key="normal" title="Empieza tu operación">
@@ -173,7 +173,7 @@
                             <constraint firstItem="HBP-3k-xqq" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="7K6-lL-5S9"/>
                             <constraint firstItem="meb-Dv-Tzp" firstAttribute="trailing" secondItem="Fa2-he-6Jk" secondAttribute="trailing" id="7nf-TL-3CH"/>
                             <constraint firstItem="meb-Dv-Tzp" firstAttribute="top" secondItem="Fa2-he-6Jk" secondAttribute="top" constant="6" id="EZ8-Y9-eDz"/>
-                            <constraint firstAttribute="bottom" secondItem="VNr-eL-IX0" secondAttribute="bottom" id="Kci-es-ydh"/>
+                            <constraint firstAttribute="bottom" secondItem="VNr-eL-IX0" secondAttribute="bottom" constant="20" id="Kci-es-ydh"/>
                             <constraint firstItem="meb-Dv-Tzp" firstAttribute="leading" secondItem="Fa2-he-6Jk" secondAttribute="leading" id="LSc-HN-ziz"/>
                             <constraint firstItem="HBP-3k-xqq" firstAttribute="top" secondItem="j0h-Ve-EdC" secondAttribute="bottom" constant="40" id="Rod-tO-ckZ"/>
                             <constraint firstItem="VNr-eL-IX0" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="SHR-NB-LAR"/>
@@ -193,8 +193,7 @@
                     </view>
                     <navigationItem key="navigationItem" id="lGs-IX-SpV"/>
                     <connections>
-                        <outlet property="changeIconImage" destination="8jf-jT-aNw" id="gPT-BE-paY"/>
-                        <outlet property="changeIconView" destination="RGO-2x-aEC" id="zbo-GE-Lxd"/>
+                        <outlet property="exchangeCurrenciesView" destination="RGO-2x-aEC" id="zbo-GE-Lxd"/>
                         <outlet property="firstCurrencyLabel" destination="uKq-D7-jXL" id="vXn-VK-04R"/>
                         <outlet property="firstText" destination="IqZ-ul-UTJ" id="ghZ-6F-hvg"/>
                         <outlet property="firtsView" destination="vdq-Gu-2OY" id="d7g-br-BlP"/>
@@ -279,11 +278,11 @@
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
+        <systemColor name="systemCyanColor">
+            <color red="0.19607843137254902" green="0.67843137254901964" blue="0.90196078431372551" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
         <systemColor name="systemGrayColor">
             <color red="0.55686274509803924" green="0.55686274509803924" blue="0.57647058823529407" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </systemColor>
-        <systemColor name="systemTealColor">
-            <color red="0.18823529411764706" green="0.69019607843137254" blue="0.7803921568627451" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>

@@ -16,10 +16,14 @@ struct GetCurrenciesResponse: Codable {
     let rate: Double
     let sell: Double
     let buy: Double
+    let symbol2: String
+    let description2: String
 
     enum CodingKeys: String, CodingKey {
         case country
         case description
+        case description2
         case image, symbol, rate, sell, buy
+        case symbol2
     }
 }

@@ -16,15 +16,12 @@ class HomeViewController: UIViewController {
     @IBOutlet weak var firstCurrencyLabel: UILabel!
     @IBOutlet weak var secondView: UIView!
     @IBOutlet weak var secondCurrencyLabel: UILabel!
-    @IBOutlet weak var changeIconView: UIView!
-    @IBOutlet weak var changeIconImage: UIImageView!
+    @IBOutlet weak var exchangeCurrenciesView: UIView!
     
     var viewModel: HomeViewModelType = HomeViewModel(currrencyService: CurrencyService())
     var currencies:[GetCurrenciesResponse] = []
     var current:GetCurrenciesResponse?
     let initValue:Double = 100.00
-    
-    private var currentRatesDate: String?
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -33,6 +30,7 @@ class HomeViewController: UIViewController {
         
         viewModel.delegate = self
         viewModel.getCurrrencies()
+        firstText.becomeFirstResponder()
     }
     func settingTap() {
         let tap1 = UITapGestureRecognizer(target: self, action: #selector(self.tapFirstCurrency(_:)))
@@ -41,8 +39,8 @@ class HomeViewController: UIViewController {
         let tap2 = UITapGestureRecognizer(target: self,action: #selector(self.tapSecondCurrency(_:)))
         secondView.addGestureRecognizer(tap2)
 
-        let tap3 = UITapGestureRecognizer(target: self, action: #selector(self.changesCurrency(_:)))
-        changeIconView.addGestureRecognizer(tap3)
+        let tap3 = UITapGestureRecognizer(target: self, action: #selector(self.exchangeCurrencies(_:)))
+        exchangeCurrenciesView.addGestureRecognizer(tap3)
         
         firstText.addTarget(self, action: #selector(editingChanged(amounText:)), for: .editingChanged)
     }
@@ -57,8 +55,12 @@ class HomeViewController: UIViewController {
         secondText.isHidden = true
     }
     
-    @objc func changesCurrency(_:UIImageView){
-        
+    @objc func exchangeCurrencies(_:UIImageView){
+        let money01 = firstCurrencyLabel.text
+        let money02 = secondCurrencyLabel.text
+        firstCurrencyLabel.text = money02
+        secondCurrencyLabel.text = money01
+        operation()
     }
     
     @objc func editingChanged(amounText:UITextField){
@@ -82,27 +84,30 @@ class HomeViewController: UIViewController {
     }
     
     func operation(){
-        guard let destinationCurrency = self.secondCurrencyLabel.text else { return }
-        let rateSource = UserDefaults.standard.double(forKey: "rateSource")
-        var rateDestination :Double = 0
-        let myCurrencies = self.currencies
-        for currency in myCurrencies {
-            if currency.description == destinationCurrency {
-                rateDestination = currency.rate
-            }
-        }
+        guard let source = firstText.text else { return }
+        guard let buy = self.current?.buy else { return }
+        guard let sell = self.current?.sell else { return }
         
-        guard let amountSource = Double(self.firstText.text!) else { return }
-
-        let amount = amountSource * rateDestination / rateSource
-        let rounded = amount.roundToDecimal(2)
-
-        self.secondText.text = String(rounded)
-    }
+        let value01 = Double(source) ?? 0.00
+        var value02:Double = 0.00
     
+        if firstCurrencyLabel.text?.uppercased() == "DOLARES" || firstCurrencyLabel.text?.uppercased() == "EURO"  {
+            value02 = value01*buy
+            secondCurrencyLabel.text = current?.description
+        } else {
+            value02 = value01/sell
+            firstCurrencyLabel.text = current?.description
+        }
+        secondText.text = value02.toString(decimal: 2)
+    }
     
     @IBAction func startOperationButtonPressed(_ sender: Any) {
         self.operation()
+        Toast(duration: 0.8,
+              text: "Operacion realizada",
+              container: self.navigationController,
+              backgroundColor: Colors.lightGreen,
+              completion: {})
     }
 }
 
@@ -143,15 +148,14 @@ extension HomeViewController {
         footerLabel.text = "Compra: \(currency.buy) | Venta: \(currency.sell)"
         
         firstText.text = String(initValue)
-        secondText.text = String(initValue*currency.buy)
-        
-        firstCurrencyLabel.text = "Dolares"
+        firstCurrencyLabel.text = currency.description2
         secondCurrencyLabel.text = currency.description
-        
+        operation()
     }
 }
 extension HomeViewController: ListCurrenciesViewControllerDelegate {
     func selected(currency: GetCurrenciesResponse) {
-        print(currency)
+        self.current = currency
+        fillDataCurrency()
     }
 }
